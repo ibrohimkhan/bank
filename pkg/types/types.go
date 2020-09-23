@@ -3,10 +3,10 @@ package types
 // Money represented by cents
 type Money int64
 
-// Currency represents code of currency
+// Currency code
 type Currency string
 
-// Currency code
+// Currency code values
 const (
 	TJS Currency = "TJS"
 	RUB Currency = "RUB"
@@ -16,7 +16,7 @@ const (
 // PAN payment card number
 type PAN string
 
-// Card represents payment info
+// Card info
 type Card struct {
 	ID 			int
 	PAN 		PAN
@@ -28,14 +28,25 @@ type Card struct {
 	Active 		bool
 }
 
-// Category of things used in payment
+// Category of payment
 type Category string
 
-// Payment представляет информацию о платеже
+// Status of payment
+type Status string
+
+// Status values
+const (
+	StatusOk Status = "OK"
+	StatusFail Status = "FAIL"
+	StatusInProgress Status = "INPROGRESS"
+)
+
+// Payment info
 type Payment struct {
 	ID 			int
 	Amount 		Money
 	Category 	Category
+	Status		Status
 }
 
 // PaymentSource - source info
